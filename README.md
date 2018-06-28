@@ -25,7 +25,8 @@
 3. Запустите файл avito.py
 
 ```
-$ python avito.py 
+$ python avito.py #Для Linux, Mac OS
+> python avito.py #Для Windows
 ```
 
 4. Введите в консоли товар, который вы хотите найти
