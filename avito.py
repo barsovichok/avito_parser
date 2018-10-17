@@ -14,13 +14,21 @@ def find_in_soup(page):
     title = soup.find_all(class_="item_table-header")
     return title
 
+def parse_price(price):
+    price = price.replace('₽', '').replace(' ', '').strip().lower()
+    if price.isdigit():
+        return int(price)
+    elif price == 'бесплатно':
+        return 0
+    else:
+        return -1
+
 def find_price_list(title):
         socks_name = item.find(class_='title')
         socks_name = socks_name.get_text()
         socks_price = item.find(class_='price')
-        socks_price = socks_price.get_text()
+        socks_price = parse_price(socks_price.get_text())
         socks_name = socks_name.strip()
-        socks_price = int(socks_price.replace('₽', '').replace(' ', '').strip())
         price_list = dict(title=socks_name, price=socks_price)
         return price_list
 
